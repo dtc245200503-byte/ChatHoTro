@@ -1,0 +1,35 @@
+@baseUrl = http://localhost:5091
+@conversationId = 00000000-0000-0000-0000-000000000000
+
+### Create an order-support conversation; copy its returned id into @conversationId.
+POST {{baseUrl}}/conversations
+Content-Type: application/json
+
+{
+  "customerExternalId": "customer-1024",
+  "customerName": "Nguyen Van A",
+  "orderCode": "ORD-2026-00128",
+  "subject": "Order delivery address",
+  "initialMessage": "I need to update the delivery address for this order."
+}
+
+### List all conversations
+GET {{baseUrl}}/conversations
+
+### List waiting conversations
+GET {{baseUrl}}/conversations?status=Waiting
+
+### Get a conversation and its participants
+GET {{baseUrl}}/conversations/{{conversationId}}
+
+### Get a conversation's messages
+GET {{baseUrl}}/conversations/{{conversationId}}/messages
+
+### Close a conversation
+POST {{baseUrl}}/conversations/{{conversationId}}/close
+
+### Invalid status returns a validation problem
+GET {{baseUrl}}/conversations?status=Unknown
+
+### Unknown conversation returns 404
+GET {{baseUrl}}/conversations/00000000-0000-0000-0000-000000000000
