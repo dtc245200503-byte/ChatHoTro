@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ChatApi/ChatApi.csproj" />
+    <Project Path="src/Contracts/Contracts.csproj" />
+    <Project Path="src/HistoryWorker/HistoryWorker.csproj" />
+  </Folder>
+</Solution>
